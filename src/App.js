@@ -1,10 +1,10 @@
-import './App.css';
-
+import React from "react";
+import Home from '../src/components/Home'
+import Search from '../src/components/Search'
 function App() {
   return (
-    <div className="App">
-      <h1>React boiler plate</h1>
-    </div>
+      // <Home/>
+      <Search />
   );
 }
 
