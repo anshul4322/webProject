@@ -11,7 +11,9 @@
   .req {
     color: red;
 }
-
+.error-msg{
+    color: red;
+}
 .form-fields-class{
     margin-top: 2%;
     margin-bottom: 2%;
@@ -43,7 +45,12 @@ button{
     display: flex;
     justify-content: space-around;
 }
-
+.fieldRowsGender{
+    padding-left: 160px;
+    display: left;
+    margin-bottom: 1rem;
+    justify-content: space-around;
+}
 #carrierName{
     width: 61vw;
 }

@@ -5,21 +5,20 @@ import React, { useState } from 'react';
 
 function Search() {
 
-    const [ formValues, setFormValues] = useState({});
-    const [errorMessage, setErrorMessage] = useState("");
+    const [ formValues, setFormValues] = useState({firtstName:"", lastName:"", dob:"", ssn:"", gender:"", address:"", zip:""});
 
     const handleSubmit = (event) => {
         alert('A name was submitted: ');
         event.preventDefault();
     }
-    const genderOptions = [{ label: 'Select'}, { label: 'Male', value: 'male' }, { label: 'Female', value: 'female' }, { label: 'Other', value: 'other' }]
+
+    const genderOptions = [{ label: 'Male', value: 'male' }, { label: 'Female', value: 'female' }, { label: 'Other', value: 'other' }]
 
     function handleUserInput (e) {
         const name = e.target.name;
         const value = e.target.value;
-        setFormValues({...formValues, [name]: value.trim()});        
+        setFormValues({...formValues, [name]: value.trim()}); 
     }
-
     return (   
         <>                         
         <div className="border-box">
@@ -29,24 +28,24 @@ function Search() {
                     <div className="fieldsRows">
                         <span>
                             <label htmlFor="firstName">First Name<span className="req">*</span></label>
-                            <input id="name" type="text" name="firstName" placeholder="First Name" onChange={(event) => handleUserInput(event)}></input>
+                            <input id="name" type="text" name="firstName" placeholder="First Name" onChange={(event) => handleUserInput(event)} maxLength={100}></input>                           
                         </span>
                         <span>
                             <label htmlFor="lastName">Last Name<span className="req">*</span></label>
-                            <input id="name" type="text" name="lastName" placeholder="Last Name" onChange={(event) => handleUserInput(event)}></input>
+                            <input id="name" type="text" name="lastName" placeholder="Last Name" onChange={(event) => handleUserInput(event)} maxLength={100}></input>
                         </span>
                     </div>
                     <div className="fieldsRows">
                         <span>
                             <label htmlFor="dob">DOB<span className="req">*</span></label>
-                            <input id="dob" type="date" name="dob" placeholder="MM/DD/YYYY" onChange={(event) => handleUserInput(event)}></input>
+                            <input id="dob" type="date" name="dob" placeholder="DD-MM-YYYY" onChange={(event) => handleUserInput(event)} max={new Date().toISOString().split("T")[0]}></input>
                         </span>
                         <span>
                             <label htmlFor="ssn">SSN<span className="req">*</span></label>
-                            <input id="ssn" type="text" name="ssn" placeholder="SSN" onChange={(event) => handleUserInput(event)}></input>
+                            <input id="ssn" type="number" name="ssn" placeholder="SSN" onChange={(event) => handleUserInput(event)}></input>
                         </span>
                     </div>
-                    <div className="fieldsRows">
+                    <div className="fieldRowsGender">
                         <span>
                             <label htmlFor="gender">Gender<span className="req">*</span></label>
                             <Select options={genderOptions} handleInput ={handleUserInput} name="gender" id="gender"/>
